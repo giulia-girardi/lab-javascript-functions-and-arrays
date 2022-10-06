@@ -43,13 +43,39 @@ function sumNumbers(arrayOfNumbers) {
   }
 }
 
-console.log(sumNumbers(numbers))
+//console.log(sumNumbers(numbers))
 
 
 
 
-// Iteration #3.1 Bonus:
-function sum() {}
+// Iteration #3.2 Bonus:
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+function sum(arrayOfAny) {
+  if (arrayOfAny.length === 0) {
+    return 0 
+  } else {
+    let sumTotal = arrayOfAny[0];
+    for (let index = 1; index < arrayOfAny.length; index += 1) {
+      if (typeof arrayOfAny[index] === "boolean") {
+        Number(arrayOfAny[index])
+        //console.log(arrayOfAny[index])
+        sumTotal += arrayOfAny[index]
+      } else if (typeof arrayOfAny[index] === "string"){
+        sumTotal += arrayOfAny[index].length
+      } else if (typeof arrayOfAny[index] === "number") {
+        sumTotal += arrayOfAny[index]
+      }
+      //console.log(arrayOfAny[index])
+    }
+    return sumTotal 
+  }
+}
+
+console.log(sum(mixedArr))
+  
+  
+
 
 
 
@@ -65,7 +91,7 @@ function averageNumbers(arrayOfNumbers) {
     return average;
   }
 }
-console.log(averageNumbers(numbersAvg))
+//console.log(averageNumbers(numbersAvg))
 
 
 // Level 2: Array of strings
@@ -85,7 +111,7 @@ function averageWordLength(arrayOfWords) {
     return sumStrings / arrayOfWords.length;
  }
 }
-console.log(averageWordLength(wordsArr))
+//console.log(averageWordLength(wordsArr))
 
 // Bonus - Iteration #4.1
 function avg() {}
@@ -122,7 +148,7 @@ function uniquifyArray(arrayOfWords) {
   }
 }
 
-console.log(uniquifyArray(wordsUnique))
+//console.log(uniquifyArray(wordsUnique))
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
@@ -139,7 +165,7 @@ function doesWordExist(arrayOfWords, wordToSearch) {
     }
   }
 }
-console.log(doesWordExist(wordsFind, "trouble"))
+//console.log(doesWordExist(wordsFind, "trouble"))
 
 
 // Iteration #7: Count repetition
@@ -172,7 +198,7 @@ function howManyTimes(arrayOfWords, wordToSearch) {
   return wordCount
 }
 
-console.log(howManyTimes(wordsCount, "matter"))
+//console.log(howManyTimes(wordsCount, "matter"))
 
 
 
