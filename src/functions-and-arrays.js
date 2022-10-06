@@ -55,8 +55,8 @@ function sum(arrayOfAny) {
   if (arrayOfAny.length === 0) {
     return 0 
   } else {
-    let sumTotal = arrayOfAny[0];
-    for (let index = 1; index < arrayOfAny.length; index += 1) {
+    let sumTotal = 0;
+    for (let index = 0; index < arrayOfAny.length; index += 1) {
       if (typeof arrayOfAny[index] === "boolean") {
         Number(arrayOfAny[index])
         //console.log(arrayOfAny[index])
@@ -113,8 +113,35 @@ function averageWordLength(arrayOfWords) {
 }
 //console.log(averageWordLength(wordsArr))
 
-// Bonus - Iteration #4.1
-function avg() {}
+// Bonus - Iteration #4.3
+const mixedArr2 = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+function avg(mixedArray) {
+  if (mixedArray.length === 0) {
+    return null
+  } else {
+    let sum = 0;
+    for (let index = 0; index < mixedArray.length; index += 1) {
+      if (typeof mixedArray[index] === "boolean") {
+        Number(mixedArray[index])
+        //console.log(arrayOfAny[index])
+        sum += mixedArray[index]
+      } else if (typeof mixedArray[index] === "string"){
+        sum += mixedArray[index].length
+      } else if (typeof mixedArray[index] === "number") {
+        sum += mixedArray[index]
+      } else if (typeof mixedArray[index] === "object") {
+        throw new Error("Unsupported data type sir or ma'am")
+      } else if (typeof mixedArray[index] === "array") {
+        throw new Error("Unsupported data type sir or ma'am")
+      }
+      //console.log(mixedArray[index])
+    }
+    return sum / mixedArray.length;
+  }
+}
+
+console.log(avg(mixedArr2))
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -226,8 +253,47 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+let matrixTest = [
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+];
 
+function greatestProduct(anyMatrix) {
+  let product = 0;
+  let maxProduct = 0;
+  let maxHorVer = 0;
+  for (let index = 0; index < anyMatrix.length - 3; index += 1) {
+    for (let j = 0; j < anyMatrix[index].length - 3; j += 1) {
+    product = (anyMatrix[index][j]) * (anyMatrix[index][j + 1]) * (anyMatrix[index][j + 2])* (anyMatrix[index][j + 3])
+    productVert = (anyMatrix[index][j]) * (anyMatrix[index + 1][j]) * (anyMatrix[index + 2][j])* (anyMatrix[index + 3][j])
+    productDiag = (anyMatrix[index][j]) * (anyMatrix[index + 1][j + 1]) * (anyMatrix[index + 2][j + 2])* (anyMatrix[index + 3][j + 3])
+    maxHorVer = Math.max(product, productVert, productDiag)
+    if (maxHorVer > maxProduct) {
+      maxProduct = maxHorVer;
+    }
+    } 
+  }
+  return maxProduct
+}
+console.log(greatestProduct(matrixTest))
 
 
 
